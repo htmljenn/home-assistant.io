@@ -32,3 +32,13 @@ sensor:
 <p class='img'>
   <img src='{{site_root}}/images/screenshots/time_date.png' />
 </p>
+
+The display options are hard coded. If you want to change how they are displayed, use a [template] (https://www.home-assistant.io/docs/configuration/templating/): 
+
+```yaml
+# Example of a template changing the time format to HH:MM AM/PM
+  - platform: template
+    sensors:
+      time:
+        value_template: "{{as_timestamp(now()) | timestamp_custom('%-I:%M %p')}}"
+```
